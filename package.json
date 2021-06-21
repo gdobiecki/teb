@@ -1,0 +1,19 @@
+{
+  "name": "teb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:first": "npx cypress open --config ignoreTestFiles='**/a*.spec.js'",
+    "cy:second": "CYPRESS_BASE_URL=https://s1.demo.opensourcecms.com/wordpress/ npx cypress open --config ignoreTestFiles='**/f*.spec.js'"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^7.5.0",
+    "cypress-real-events": "^1.5.0",
+    "eslint": "^7.28.0",
+    "eslint-plugin-cypress": "^2.11.3",
+    "eslint-plugin-json-format": "^2.0.1"
+  }
+}
