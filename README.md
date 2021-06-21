@@ -18,4 +18,4 @@
 
 * Task #3
 
-`ddd`
+`npm run cy:third`

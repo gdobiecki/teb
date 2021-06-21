@@ -23,7 +23,7 @@ describe('Task #1', () => {
         cy.url().should('contain', encodeURI('wrocław'));
         fieldOfStudiesPage.filter().contains('Studia inżynierskie').click();
         cy.url().should('contain', encodeURI('studia inżynierskie'));
-        fieldOfStudiesPage.fieldOfStudy().should('have.length', 3);
+        fieldOfStudiesPage.fieldOfStudies().should('have.length', 3);
         fieldOfStudiesPage.assertCitiesForGivenFiledOfStudies('Informatyka', ITCities);
         fieldOfStudiesPage.assertImageExistsForGivenFieldOfStudies('Informatyka');
         fieldOfStudiesPage.assertCitiesForGivenFiledOfStudies('Inżynieria zarządzania', managementEngineeringCities);

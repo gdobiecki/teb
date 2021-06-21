@@ -7,7 +7,7 @@ export default class FieldOfStudiesPage {
         });
     }
 
-    fieldOfStudy() { return cy.get('.direction-title > span'); }
+    fieldOfStudies() { return cy.get('.direction-title > span'); }
     filter() { return cy.get('.filters label'); }
     filters() { return cy.get('.filters'); }
     searchingInput() { return cy.get('#listing-search'); }
@@ -15,7 +15,7 @@ export default class FieldOfStudiesPage {
     enrollButton() { return cy.get('.cta-wrapper a'); }
 
     assertCitiesForGivenFiledOfStudies(fieldOfStudies, cities) {
-        this.fieldOfStudy().contains(fieldOfStudies).parent().siblings('.cities').then(res => {
+        this.fieldOfStudies().contains(fieldOfStudies).parent().siblings('.cities').then(res => {
             cities.forEach(city => {
                 expect(res.text()).to.include(city);
             });
@@ -23,7 +23,7 @@ export default class FieldOfStudiesPage {
     }
 
     assertImageExistsForGivenFieldOfStudies(fieldOfStudies) {
-        this.fieldOfStudy().contains(fieldOfStudies).parents('.direction-title-wrap').within(() => {
+        this.fieldOfStudies().contains(fieldOfStudies).parents('.direction-title-wrap').within(() => {
             cy.get('.direction-img img').should('be.visible');
         });
     }

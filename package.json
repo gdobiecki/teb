@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cy:first": "npx cypress open --config ignoreTestFiles='**/a*.spec.js'",
-    "cy:second": "CYPRESS_BASE_URL=https://s1.demo.opensourcecms.com/wordpress/ npx cypress open --config ignoreTestFiles='**/f*.spec.js'"
+    "cy:first": "npx cypress open --config ignoreTestFiles=['**/a*.spec.js','**/c*.spec.js']",
+    "cy:second": "CYPRESS_BASE_URL=https://s1.demo.opensourcecms.com/wordpress/ npx cypress open --config ignoreTestFiles=['**/f*.spec.js','**/c*.spec.js']",
+    "cy:third": "npx cypress open --config ignoreTestFiles=['**/a*.spec.js','**/f*.spec.js']"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "cypress-real-events": "^1.5.0",
     "eslint": "^7.28.0",
     "eslint-plugin-cypress": "^2.11.3",
-    "eslint-plugin-json-format": "^2.0.1"
+    "eslint-plugin-json-format": "^2.0.1",
+    "uuid": "^3.4.0"
   }
 }

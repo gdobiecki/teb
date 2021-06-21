@@ -6,7 +6,9 @@
     "supportFile": "cypress/support/index.js",
     "fixturesFolder": "cypress/fixtures",
     "pluginsFile": "cypress/plugins/index.js",
-    "env": {},
+    "env": {
+        "apiHost": "https://nonexistinghost.com"
+    },
     "defaultCommandTimeout": 10000,
     "pageLoadTimeout": 60000,
     "taskTimeout": 600000,
