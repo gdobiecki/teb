@@ -7,8 +7,8 @@ describe('Task #2', () => {
     const mainPage = new MainPage();
     const postPage = new PostPage();
     it('add comment', () => {
-        const comment = `comment_${Date.now()}`;
         const author = `author_${Date.now()}`;
+        const comment = `comment_${Date.now()}`;
         const email = `email_${Date.now()}@gmail.com`;
         const url = 'https://google.com';
         mainPage.open();
@@ -17,5 +17,67 @@ describe('Task #2', () => {
         postPage.addComment(comment, author, email, url);
         commentPreviewPage.author().should('contain.text', author);
         commentPreviewPage.comment().should('contain.text', comment);
+    });
+
+    it('user cannot add a comment without an email address', () => {
+        const author = `author_${Date.now()}`;
+        const comment = `comment_${Date.now()}`;
+        const email = '';
+        const url = 'https://google.com';
+        mainPage.open();
+        mainPage.openPostWithTitle('Hello world!');
+        cy.url().should('contain', 'hello-world');
+        postPage.addComment(comment, author, email, url);
+        commentPreviewPage.errorMsg().should('contain.text', 'Error: Please fill the required fields (name, email).');
+    });
+
+    it('user cannot add a comment without a name', () => {
+        const author = '';
+        const comment = `comment_${Date.now()}`;
+        const email = `email_${Date.now()}@gmail.com`;
+        const url = 'https://google.com';
+        mainPage.open();
+        mainPage.openPostWithTitle('Hello world!');
+        cy.url().should('contain', 'hello-world');
+        postPage.addComment(comment, author, email, url);
+        commentPreviewPage.errorMsg().should('contain.text', 'Error: Please fill the required fields (name, email).');
+    });
+
+    it('user cannot add a comment wihtout actual comment', () => {
+        const author = `author_${Date.now()}`;
+        const comment = '';
+        const email = `email_${Date.now()}@gmail.com`;
+        const url = 'https://google.com';
+        mainPage.open();
+        mainPage.openPostWithTitle('Hello world!');
+        cy.url().should('contain', 'hello-world');
+        postPage.addComment(comment, author, email, url);
+        commentPreviewPage.errorMsg().should('contain.text', 'Error: Please type your comment text.');
+    });
+
+
+    it('user can add a comment without url', () => {
+        const author = `author_${Date.now()}`;
+        const comment = `comment_${Date.now()}`;
+        const email = `email_${Date.now()}@gmail.com`;
+        const url = '';
+        mainPage.open();
+        mainPage.openPostWithTitle('Hello world!');
+        cy.url().should('contain', 'hello-world');
+        postPage.addComment(comment, author, email, url);
+        commentPreviewPage.author().should('contain.text', author);
+        commentPreviewPage.comment().should('contain.text', comment);
+    });
+
+    it('user cannot add a comment with all fields empty', () => {
+        const author = '';
+        const comment = '';
+        const email = '';
+        const url = '';
+        mainPage.open();
+        mainPage.openPostWithTitle('Hello world!');
+        cy.url().should('contain', 'hello-world');
+        postPage.addComment(comment, author, email, url);
+        commentPreviewPage.errorMsg().should('contain.text', 'Error: Please fill the required fields (name, email).');
     });
 });
