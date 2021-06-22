@@ -1,8 +1,10 @@
-import { addNewPayment, getPayment } from '../utils/api';
+import { createNewPayment, getPayment } from '../utils/api';
+import { payment } from '../testData/testData';
 
 describe('Task #3', () => {
-    it('add new payment and verify it', () => {
-        addNewPayment().then(response => {
+    const paymentBody = payment();
+    it('create a new payment and verify it', () => {
+        createNewPayment(paymentBody).then(response => {
             const id = response.data.id;
             const userId = response.data.userId;
             const typeId = response.data.typeId;

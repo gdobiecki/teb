@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cy:first": "npx cypress open --config ignoreTestFiles=['**/a*.spec.js','**/c*.spec.js']",
-    "cy:second": "CYPRESS_BASE_URL=https://s1.demo.opensourcecms.com/wordpress/ npx cypress open --config ignoreTestFiles=['**/f*.spec.js','**/c*.spec.js']",
+    "cy:first:open": "npx cypress open --config ignoreTestFiles=['**/a*.spec.js','**/c*.spec.js']",
+    "cy:first:run": "npx cypress run --spec cypress/integration/filtering.spec.js",
+    "cy:second:open": "CYPRESS_BASE_URL=https://s1.demo.opensourcecms.com/wordpress/ npx cypress open --config ignoreTestFiles=['**/f*.spec.js','**/c*.spec.js']",
+    "cy:second:run": "CYPRESS_BASE_URL=https://s1.demo.opensourcecms.com/wordpress/ npx cypress run --spec cypress/integration/addComment.spec.js",
     "cy:third": "npx cypress open --config ignoreTestFiles=['**/a*.spec.js','**/f*.spec.js']"
   },
   "author": "",

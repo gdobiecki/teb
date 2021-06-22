@@ -7,7 +7,7 @@ describe('Task #2', () => {
     const mainPage = new MainPage();
     const postPage = new PostPage();
 
-    it('add comment', () => {
+    it('user can add a comment with all field filled', () => {
         const author = `author_${Date.now()}`;
         const comment = `comment_${Date.now()}`;
         const email = `email_${Date.now()}@gmail.com`;
@@ -44,7 +44,7 @@ describe('Task #2', () => {
         commentPreviewPage.errorMsg().should('contain.text', 'Error: Please fill the required fields (name, email).');
     });
 
-    it('user cannot add a comment wihtout actual comment', () => {
+    it('user cannot add a comment without actual comment', () => {
         const author = `author_${Date.now()}`;
         const comment = '';
         const email = `email_${Date.now()}@gmail.com`;
@@ -67,7 +67,7 @@ describe('Task #2', () => {
         commentPreviewPage.errorMsg().should('contain.text', 'Error: Please fill the required fields (name, email).');
     });
 
-    //It's commented, because page doesn't allow to add comments too frequently.
+    //It's skipped, because page doesn't allow to add comments too frequently.
     //If you want to run this test, just replace `skip` with `only`.
     it.skip('user can add a comment without url', () => {
         const author = `author_${Date.now()}`;
