@@ -33,5 +33,5 @@ Headless mode: `npm run cy:second:run`
 * Task #3
 
 ```
-Solution for this task can be found in createNewPayment.spec.js
+Solution for this task can be found in cypress/integration/createNewPayment.spec.js
 ```
